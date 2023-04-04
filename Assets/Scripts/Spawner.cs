@@ -18,11 +18,12 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currentSpeed += Time.deltaTime * 0.1f;
     }
-    void GenerateObstacle()
+    public void GenerateObstacle()
     {
         GameObject obIns = Instantiate(obstacle, transform.position, transform.rotation);
         obIns.GetComponent<Rigidbody2D>().velocity = Vector2.left * currentSpeed;
+        obIns.GetComponent<Obstacle>().spawner = this;
     }    
 }
